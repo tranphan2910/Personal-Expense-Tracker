@@ -419,3 +419,33 @@ def export_xls_file(request):
 
     return response
 
+
+@login_required(login_url='/authentication/login')
+def monthly_expenses_growth(request, mths):
+    today = datetime.date.today()
+    months_data = []  # Lưu trữ các tháng
+    expenses_data = []  # Lưu trữ tổng chi tiêu mỗi tháng
+
+    # Truy vấn chi tiêu trong khoảng thời gian mths tháng qua
+    for month_offset in range(mths):
+        # Tính ngày đầu tháng cho tháng hiện tại và các tháng trước đó
+        start_date = today - relativedelta(months=month_offset)
+        start_date = start_date.replace(day=1)  # Ngày đầu tháng
+        
+        # Tính ngày cuối tháng
+        end_date = (start_date + relativedelta(months=1, day=1)) - relativedelta(days=1)
+
+        expenses_in_month = Expense.objects.filter(user=request.user, date__gte=start_date, date__lte=end_date)
+        total_expenses = sum(expense.amount for expense in expenses_in_month)
+
+        months_data.append(start_date.strftime('%B %Y'))  # Lưu tên tháng
+        expenses_data.append(total_expenses)  # Lưu tổng chi tiêu của tháng
+
+    # Tính sự thay đổi (tăng/giảm) theo tháng
+    growth_data = [0]  # Không có sự thay đổi cho tháng đầu tiên
+    for i in range(1, len(expenses_data)):
+        growth_data.append(expenses_data[i] - expenses_data[i-1])
+
+    return JsonResponse({
+        'expenses_growth_data': dict(zip(months_data, growth_data))  # Trả về dữ liệu với trường expenses_growth_data
+    }, safe=False)
