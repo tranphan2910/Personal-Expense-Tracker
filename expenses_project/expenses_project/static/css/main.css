@@ -48,3 +48,6 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
 }
+body {
+    background: linear-gradient(135deg, #f8f9ff, #eef3ff);
+}

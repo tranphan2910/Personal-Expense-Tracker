@@ -35,3 +35,29 @@ input[type="submit"], input[type="button"], .submit-row input {
 .login #content, #footer {
     background-color: #545454;
 }
+
+/* Resize logo trong phần branding của Django admin */
+/* === ADMIN LOGO === */
+#header {
+  height: auto !important;
+  padding: 16px 20px !important;
+}
+
+#branding {
+  height: auto !important;
+  line-height: normal !important;
+}
+
+#head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+#branding img {
+  width: 80px !important;   /* 👈 chỉnh size admin ở đây */
+  height: 80px !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain;
+}
