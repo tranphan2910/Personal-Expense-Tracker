@@ -58,6 +58,7 @@ body {
   
   .sidebar-heading {
     font-size: .75rem;
+    color: #3e4486
   }
   
   /*
@@ -90,3 +91,45 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
+
+  #sidebarMenu {
+    background-color: #9fc2f2 !important; /* nền xám xanh nhạt */
+    border-right: 1px solid #4589c1;
+}
+#sidebarMenu .nav-link {
+    color: #2563EB !important;   /* xanh giống Overview */
+}
+#sidebarMenu .sidebar-heading {
+    color:  #334155 !important;          /* xanh xám dịu */
+    font-weight: 1000;
+    letter-spacing: 0.08em;
+}
+main {
+    background-color: #ffffff !important;
+}
+
+nav.navbar.bg-dark {
+    background-color: #cee1fa !important;  /* màu bạn muốn */
+}
+.pagination .page-link {
+    background-color: #E0F2FE;   /* xanh nhạt */
+    border-color: #60A5FA;
+    color: #1D4ED8;
+}
+.pagination .page-link:hover {
+    background-color: #BFDBFE;   /* xanh đậm hơn */
+    border-color: #3B82F6;
+    color: #1D4ED8;
+}
+.pagination .page-item.active .page-link {
+    background-color: #2563EB !important;   /* xanh dương đậm */
+    border-color: #2563EB;
+    color: #ffffff;
+}
+/* FIX nền cho trang đang active (span ở giữa) */
+.pagination .page-link.disabled {
+    background-color: #2563EB !important;   /* xanh dương đậm */
+    border-color: #2563EB !important;
+    color: #ffffff !important;
+    opacity: 1 !important;                  /* bỏ mờ */
+    pointer-events: none;

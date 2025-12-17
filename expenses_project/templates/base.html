@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Fat Cat
+    <title>Maoneki
         {% block title %} 
         {% endblock %}
     </title>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="col-md-4 d-flex justify-content-end">
-                  <h6 class="m-2" style="color: white;">signed in as <strong>{{ request.user.username }}</strong></h6>
+                  <h6 class="m-2" style="color: rgb(255, 255, 255);">signed in as <strong>{{ request.user.username }}</strong></h6>
                   <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
                     <input class="btn btn-primary" type="submit" value="Sign out">
